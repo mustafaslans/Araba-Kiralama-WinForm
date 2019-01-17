@@ -1,6 +1,7 @@
 ﻿using ArabaKiralama.BLL.Repository;
 using ArabaKiralama.DAL;
 using ArabaKiralama.DAL.Classes;
+using ArabaKiralamaWinUI.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace ArabaKiralamaWinUI
         {
          
             var result = from mus in ac.Musteriler
-                         where label21.Text == mus.Username
+                         where  mus.Username == label21.Text
                          select mus;
             dataGridmusteriprofil.DataSource = result.ToList();
         }
@@ -43,6 +44,9 @@ namespace ArabaKiralamaWinUI
             sidepanel.Left = panel1.Left;
             grparabasec.Hide();
             grpodeme.Hide();
+            cmbcinsiyet.DisplayMember = "Description";
+            cmbcinsiyet.ValueMember = "Value";
+            cmbcinsiyet.DataSource = Enum.GetValues(typeof(CinsiyetEnum));
             if (ac.Musteriler == null)
             {
                 return;
@@ -133,50 +137,43 @@ namespace ArabaKiralamaWinUI
             {
                 MessageBox.Show("E-mailinizi giriniz");
                 return;
-            }
-            if (m.MusteriMail.Contains(txtgncemail.Text))
-            {
-                MessageBox.Show("E-mail adresi mevcut");
-                return;
-            }
-            DateTime bTarih = Convert.ToDateTime(DateTime.Now.Year);
-            DateTime kTarih = Convert.ToDateTime(dategncdogum.Value.Year);
-            TimeSpan Sonuc = bTarih - kTarih;
-            if (Convert.ToInt32(Sonuc) < 18)
-            {
-                MessageBox.Show("Yaşınız uygun değil");
-                return;
-            }
+            }           
+            //DateTime bTarih = Convert.ToDateTime(DateTime.Now.Year);
+            //DateTime kTarih = Convert.ToDateTime(dategncdogum.Value.Year);
+            //TimeSpan Sonuc = bTarih - kTarih;
+            //if (Convert.ToInt32(Sonuc) < 18)
+            //{
+            //    MessageBox.Show("Yaşınız uygun değil");
+            //    return;
+            //}
             if (string.IsNullOrEmpty(richtxtgncadres.Text))
             {
                 MessageBox.Show("E-mailinizi giriniz");
                 return;
             }
-            #endregion
+            #endregion           
             #region Musteri Guncelle
             if (txtgncsifre.Text == txtgncsifreonay.Text)
             {
-                mr.Guncelle(new Musteri
-                {
-                    Username = txtgncuser.Text,
-                    Password = txtgncsifre.Text,
-                    MusteriAd = txtgncad.Text,
-                    MusteriSoyad = txtgncsoyad.Text,
-                    MusteriTcno = txtgnctcno.Text,
-                    MusteriTelefon = txtgnctelefon.Text,
-                    MusteriCinsiyet = cmbcinsiyet.Text,
-                    MusteriDogumtarihi = dategncdogum.Value,
-                    MusteriEhliyetalis = dategncehliyet.Value,
-                    MusteriAdres = richtxtgncadres.Text
-                });
+                guncellenecekmusteri.Username = txtgncuser.Text;
+                guncellenecekmusteri.Password = txtgncsifre.Text;
+                guncellenecekmusteri.MusteriAd = txtgncad.Text;
+                guncellenecekmusteri.MusteriSoyad = txtgncsoyad.Text;
+                guncellenecekmusteri.MusteriTcno = txtgnctcno.Text;
+                guncellenecekmusteri.MusteriTelefon = txtgnctelefon.Text;
+                guncellenecekmusteri.MusteriCinsiyet = cmbcinsiyet.Text;
+                guncellenecekmusteri.MusteriDogumtarihi = dategncdogum.Value;
+                guncellenecekmusteri.MusteriEhliyetalis = dategncehliyet.Value;
+                guncellenecekmusteri.MusteriAdres = richtxtgncadres.Text;
+                mr.Guncelle(guncellenecekmusteri);
+                MusteriDataDoldur();
             }
             else
             {
                 MessageBox.Show("Şifreler uyuşmuyor");
-            } 
-            #endregion
-            Helper.Temizle(this.Controls, grpprofil);
-            MusteriDataDoldur();
+            }
+            #endregion          
+            Helper.Temizle(this.Controls, grpprofil);         
         }
 
         private void buttonmusteriprofilsil_Click(object sender, EventArgs e)

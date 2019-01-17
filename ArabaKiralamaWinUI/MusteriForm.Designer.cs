@@ -41,7 +41,6 @@
             this.buttonmusteriprofil = new System.Windows.Forms.Button();
             this.sidepanel = new System.Windows.Forms.Panel();
             this.grpprofil = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.buttonmusteriprofilsil = new System.Windows.Forms.Button();
             this.dataGridmusteriprofil = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -92,6 +91,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -300,15 +300,6 @@
             this.grpprofil.TabIndex = 8;
             this.grpprofil.TabStop = false;
             this.grpprofil.Text = "Profil";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(489, 40);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(0, 13);
-            this.label21.TabIndex = 84;
-            this.label21.Visible = false;
             // 
             // buttonmusteriprofilsil
             // 
@@ -802,6 +793,13 @@
             this.label22.TabIndex = 0;
             this.label22.Text = "Kart Üzerindeki İsim :";
             // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(495, 37);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(32, 13);
+            this.label21.TabIndex = 84;
+            // 
             // MusteriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -810,9 +808,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.grparabasec);
             this.Controls.Add(this.grpprofil);
             this.Controls.Add(this.grpodeme);
+            this.Controls.Add(this.grparabasec);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MusteriForm";
             this.Text = "MusteriForm";
@@ -876,7 +874,6 @@
         private System.Windows.Forms.TextBox txtgncsoyad;
         private System.Windows.Forms.TextBox txtgncad;
         private System.Windows.Forms.TextBox txtgncsifre;
-        private System.Windows.Forms.TextBox txtgncuser;
         private System.Windows.Forms.GroupBox grparabasec;
         private System.Windows.Forms.DataGridView datagridarabasec;
         private System.Windows.Forms.Button bttnhesapla;
@@ -888,7 +885,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox grpodeme;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -901,5 +897,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button bttnode;
+        public System.Windows.Forms.TextBox txtgncuser;
+        public System.Windows.Forms.Label label21;
     }
 }

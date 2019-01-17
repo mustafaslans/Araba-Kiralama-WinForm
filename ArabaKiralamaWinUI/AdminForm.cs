@@ -261,11 +261,8 @@ namespace ArabaKiralamaWinUI
             guncellenecekaraba.Klima = cmbklima.Text;
             guncellenecekaraba.ArabaKm = txtkm.Text;
             guncellenecekaraba.MotorHacmi = txtmotorhacmi.Text;
-            guncellenecekaraba.Fiyat = int.Parse(txtfiyat.Text);
-            ac.Markalar.Find(ar.GetById(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value)));
-            guncellenecekaraba.ArabaMarka.MarkaAdi = txtmarka.Text;
-            guncellenecekaraba.ArabaModel.ModelAdi = txtmodel.Text;
-            ar.Guncelle(guncellenecekaraba);
+            guncellenecekaraba.Fiyat = int.Parse(txtfiyat.Text);                    
+            ar.Guncelle(guncellenecekaraba);           
             #endregion
             ArabaEkleGuncelleKontrol();
             Helper.Temizle(this.Controls, grparabaekle);
@@ -287,10 +284,8 @@ namespace ArabaKiralamaWinUI
             if (dataGridaraba.SelectedRows.Count > 0)
             {
                 guncellenecekaraba = ar.GetById(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value));
-                //var result = from mar in ac.Markalar
-                //             where
-                txtmarka.Text = guncellenecekaraba.ArabaMarka.MarkaAdi;
-                txtmodel.Text = guncellenecekaraba.ArabaModel.ModelAdi;
+                txtmarka.Text = dataGridaraba.SelectedRows[0].Cells[1].Value.ToString();
+                txtmodel.Text = dataGridaraba.SelectedRows[0].Cells[2].Value.ToString();
                 txturetim.Text = guncellenecekaraba.UretimYili;
                 cmbyakit.SelectedValue = guncellenecekaraba.Yakit;
                 cmbvites.SelectedValue = guncellenecekaraba.Vites;

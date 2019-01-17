@@ -176,6 +176,7 @@ namespace ArabaKiralamaWinUI
                     {                     
                         gf.GirisMus(txtgirisuser.Text, txtgirissifre.Text);
                         MusteriForm mf = new MusteriForm();
+                        mf.txtgncuser.Text = txtgirisuser.Text;
                         mf.label21.Text = txtgirisuser.Text;
                         mf.Show();
                         this.Hide();
