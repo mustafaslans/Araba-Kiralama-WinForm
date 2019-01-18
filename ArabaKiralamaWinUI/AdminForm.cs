@@ -33,6 +33,8 @@ namespace ArabaKiralamaWinUI
         ModelRepository mr = new ModelRepository();
         MusteriRepository msr = new MusteriRepository();
         Araba guncellenecekaraba;
+        Marka guncellenecekmarka;
+        Model guncellenecekmodel;
         #endregion
         #region Metotlar
         public void DataGridArabaDoldur()
@@ -123,8 +125,9 @@ namespace ArabaKiralamaWinUI
             cmbvites.DisplayMember = "Description";
             cmbvites.ValueMember = "Value";
             cmbvites.DataSource = Enum.GetValues(typeof(VitesEnum));
-            DataGridArabaDoldur(); 
+            DataGridArabaDoldur();
             #endregion
+            dataGridmusteritakip.DataSource = ac.MusteriTakipler.ToList();
 
         }
 
@@ -244,7 +247,7 @@ namespace ArabaKiralamaWinUI
             mr.Ekle(new Model
             {
                 MarkaId = markId,
-                ModelAdi = txtmodel.Text
+                ModelAdi = txtmodel.Text               
             });
             #endregion
             ArabaEkleGuncelleKontrol();
@@ -265,6 +268,26 @@ namespace ArabaKiralamaWinUI
             ar.Guncelle(guncellenecekaraba);           
             #endregion
             ArabaEkleGuncelleKontrol();
+            int id = ac.Arabalar.OrderByDescending(p => p.ArabaID).FirstOrDefault().ArabaID;
+            var result = (from mar in ac.Markalar
+                         where mar.ArabaId == guncellenecekaraba.ArabaID
+                         select mar.MarkaID).FirstOrDefault();
+            int res = Convert.ToInt32(result);
+            guncellenecekmarka = mrk.GetById(res);
+            guncellenecekmarka.ArabaId = id;
+            guncellenecekmarka.MarkaAdi = txtmarka.Text;
+            guncellenecekmarka.MarkaID = Convert.ToInt32(result);
+            mrk.Guncelle(guncellenecekmarka);
+            int marid = ac.Markalar.OrderByDescending(p => p.MarkaID).FirstOrDefault().MarkaID;
+            var result1 = (from mod in ac.Modeller
+                         where mod.MarkaId == guncellenecekmarka.MarkaID
+                         select mod.ModelID).FirstOrDefault();
+            int res2 = Convert.ToInt32(result1);
+            guncellenecekmodel = mr.GetById(res2);
+            guncellenecekmodel.MarkaId = marid;
+            guncellenecekmodel.ModelAdi = txtmodel.Text;
+            guncellenecekmodel.ModelID = Convert.ToInt32(result1);
+            mr.Guncelle(guncellenecekmodel);
             Helper.Temizle(this.Controls, grparabaekle);
             DataGridArabaDoldur();
         }
@@ -273,6 +296,17 @@ namespace ArabaKiralamaWinUI
         {
             if (dataGridaraba.SelectedRows.Count > 0)
             {
+                int id = Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value);
+                var result = (from res in ac.Markalar
+                             where res.ArabaId == id
+                             select res.MarkaID).FirstOrDefault();
+                int id2 = Convert.ToInt32(result);
+                mrk.Sil(id2);
+                var result2 = (from res2 in ac.Modeller
+                              where res2.MarkaId == id2
+                              select res2.ModelID).FirstOrDefault();
+                int id3 = Convert.ToInt32(result2);
+                mr.Sil(id3);               
                 ar.Sil(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value));
             }
             DataGridArabaDoldur();

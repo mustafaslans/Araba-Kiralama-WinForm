@@ -24,6 +24,7 @@ namespace ArabaKiralama.DAL.Classes
         public string MusteriKartno { get; set; }
         public DateTime MusteriKartsonkullanmatarihi { get; set; }
         public string MusteriKartCvc { get; set; }
+        public int? MusteriTakipId { get; set; }
 
 
 

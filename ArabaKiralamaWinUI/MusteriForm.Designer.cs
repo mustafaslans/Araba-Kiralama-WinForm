@@ -41,6 +41,7 @@
             this.buttonmusteriprofil = new System.Windows.Forms.Button();
             this.sidepanel = new System.Windows.Forms.Panel();
             this.grpprofil = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.buttonmusteriprofilsil = new System.Windows.Forms.Button();
             this.dataGridmusteriprofil = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,14 +85,13 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.datesonkullan = new System.Windows.Forms.DateTimePicker();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtcvc = new System.Windows.Forms.TextBox();
+            this.txtkartno = new System.Windows.Forms.TextBox();
+            this.txtkartadi = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -114,6 +114,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(633, 39);
             this.panel2.TabIndex = 7;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox2
             // 
@@ -176,7 +177,7 @@
             this.buttonmusteriodeme.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonmusteriodeme.Image = global::ArabaKiralamaWinUI.Properties.Resources.speed_meter;
             this.buttonmusteriodeme.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonmusteriodeme.Location = new System.Drawing.Point(12, 171);
+            this.buttonmusteriodeme.Location = new System.Drawing.Point(12, 160);
             this.buttonmusteriodeme.Name = "buttonmusteriodeme";
             this.buttonmusteriodeme.Size = new System.Drawing.Size(155, 45);
             this.buttonmusteriodeme.TabIndex = 11;
@@ -231,7 +232,7 @@
             this.buttonmusteriarabalar.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonmusteriarabalar.Image = global::ArabaKiralamaWinUI.Properties.Resources.car;
             this.buttonmusteriarabalar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonmusteriarabalar.Location = new System.Drawing.Point(12, 120);
+            this.buttonmusteriarabalar.Location = new System.Drawing.Point(12, 115);
             this.buttonmusteriarabalar.Name = "buttonmusteriarabalar";
             this.buttonmusteriarabalar.Size = new System.Drawing.Size(155, 45);
             this.buttonmusteriarabalar.TabIndex = 5;
@@ -300,6 +301,13 @@
             this.grpprofil.TabIndex = 8;
             this.grpprofil.TabStop = false;
             this.grpprofil.Text = "Profil";
+            // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(495, 37);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(32, 13);
+            this.label21.TabIndex = 84;
             // 
             // buttonmusteriprofilsil
             // 
@@ -674,9 +682,9 @@
             this.grpodeme.Controls.Add(this.checkBox2);
             this.grpodeme.Controls.Add(this.checkBox1);
             this.grpodeme.Controls.Add(this.datesonkullan);
-            this.grpodeme.Controls.Add(this.textBox3);
-            this.grpodeme.Controls.Add(this.textBox2);
-            this.grpodeme.Controls.Add(this.textBox1);
+            this.grpodeme.Controls.Add(this.txtcvc);
+            this.grpodeme.Controls.Add(this.txtkartno);
+            this.grpodeme.Controls.Add(this.txtkartadi);
             this.grpodeme.Controls.Add(this.label25);
             this.grpodeme.Controls.Add(this.label24);
             this.grpodeme.Controls.Add(this.label23);
@@ -731,31 +739,31 @@
             this.datesonkullan.Size = new System.Drawing.Size(136, 20);
             this.datesonkullan.TabIndex = 7;
             // 
-            // textBox3
+            // txtcvc
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.textBox3.Location = new System.Drawing.Point(145, 128);
-            this.textBox3.MaxLength = 3;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtcvc.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.txtcvc.Location = new System.Drawing.Point(145, 128);
+            this.txtcvc.MaxLength = 3;
+            this.txtcvc.Name = "txtcvc";
+            this.txtcvc.Size = new System.Drawing.Size(136, 20);
+            this.txtcvc.TabIndex = 6;
             // 
-            // textBox2
+            // txtkartno
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.textBox2.Location = new System.Drawing.Point(145, 70);
-            this.textBox2.MaxLength = 16;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtkartno.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.txtkartno.Location = new System.Drawing.Point(145, 70);
+            this.txtkartno.MaxLength = 16;
+            this.txtkartno.Name = "txtkartno";
+            this.txtkartno.Size = new System.Drawing.Size(136, 20);
+            this.txtkartno.TabIndex = 5;
             // 
-            // textBox1
+            // txtkartadi
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.textBox1.Location = new System.Drawing.Point(145, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtkartadi.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.txtkartadi.Location = new System.Drawing.Point(145, 41);
+            this.txtkartadi.Name = "txtkartadi";
+            this.txtkartadi.Size = new System.Drawing.Size(136, 20);
+            this.txtkartadi.TabIndex = 4;
             // 
             // label25
             // 
@@ -792,13 +800,6 @@
             this.label22.Size = new System.Drawing.Size(106, 13);
             this.label22.TabIndex = 0;
             this.label22.Text = "Kart Üzerindeki İsim :";
-            // 
-            // label21
-            // 
-            this.label21.Location = new System.Drawing.Point(495, 37);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(32, 13);
-            this.label21.TabIndex = 84;
             // 
             // MusteriForm
             // 
@@ -891,9 +892,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DateTimePicker datesonkullan;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtcvc;
+        private System.Windows.Forms.TextBox txtkartno;
+        private System.Windows.Forms.TextBox txtkartadi;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button bttnode;

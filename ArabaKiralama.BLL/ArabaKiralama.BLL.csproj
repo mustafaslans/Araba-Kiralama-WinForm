@@ -54,6 +54,7 @@
     <Compile Include="Repository\MarkaRepository.cs" />
     <Compile Include="Repository\ModelRepository.cs" />
     <Compile Include="Repository\MusteriRepository.cs" />
+    <Compile Include="Repository\MusteriTakipRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

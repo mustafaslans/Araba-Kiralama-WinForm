@@ -15,5 +15,6 @@ namespace ArabaKiralama.DAL
         public DbSet<Model> Modeller { get; set; }
         public DbSet<Admin> Adminler { get; set; }
         public DbSet<Musteri> Musteriler { get; set; }
+        public DbSet<MusteriTakip> MusteriTakipler { get; set; }
     }
 }

@@ -18,5 +18,6 @@ namespace ArabaKiralama.DAL.Classes
         public string Yakit { get; set; }
         public string Vites { get; set; }
         public string Klima { get; set; }
+        public int? MusteriTakipId { get; set; }
     }
 }

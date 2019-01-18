@@ -185,6 +185,7 @@
             this.buttongiris.Text = "Giriş";
             this.buttongiris.UseVisualStyleBackColor = false;
             this.buttongiris.Click += new System.EventHandler(this.buttongiris_Click);
+            this.buttongiris.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttongiris_KeyDown);
             // 
             // grpkayit
             // 

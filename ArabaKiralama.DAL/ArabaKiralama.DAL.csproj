@@ -54,12 +54,14 @@
     <Compile Include="Classes\Marka.cs" />
     <Compile Include="Classes\Model.cs" />
     <Compile Include="Classes\Musteri.cs" />
+    <Compile Include="Classes\MusteriTakip.cs" />
     <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Interfaces\IAraba.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IMarka.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\IMusteri.cs" />
+    <Compile Include="Interfaces\IMusteriTakip.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

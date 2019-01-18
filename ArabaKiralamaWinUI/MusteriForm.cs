@@ -19,16 +19,29 @@ namespace ArabaKiralamaWinUI
         #region Instances
         MusteriRepository mr = new MusteriRepository();
         ArabaContext ac = new ArabaContext();
+        MusteriTakipRepository mtr = new MusteriTakipRepository();
         Musteri guncellenecekmusteri;       
         Musteri m;
         #endregion
         public void MusteriDataDoldur()
         {
-         
-            var result = from mus in ac.Musteriler
-                         where  mus.Username == label21.Text
-                         select mus;
+          
+            dataGridmusteriprofil.Update();
+            dataGridmusteriprofil.RefreshEdit();
+            var result = ac.Musteriler.Where(x => x.Username == label21.Text);
+            dataGridmusteriprofil.DataSource = null;
             dataGridmusteriprofil.DataSource = result.ToList();
+
+            var re = from a in ac.Markalar
+                     where a.MarkaAdi == label21.Text
+                     select a.ArabaId;
+            
+        }
+        public void MusteriGuncelDoldur()
+        {
+            var result = ac.Musteriler.Where(x => x.Username == label21.Text);
+            dataGridmusteriprofil.DataSource = result.ToList();
+
         }
         public MusteriForm()
         {
@@ -39,7 +52,23 @@ namespace ArabaKiralamaWinUI
 
         private void MusteriForm_Load(object sender, EventArgs e)
         {
-            
+            var result = from arb in ac.Arabalar
+                         join mar in ac.Markalar on arb.ArabaID equals mar.ArabaId
+                         join mod in ac.Modeller on mar.MarkaID equals mod.MarkaId
+                         select new
+                         {
+                             arb.ArabaID,
+                             mar.MarkaAdi,
+                             mod.ModelAdi,
+                             arb.UretimYili,
+                             arb.Yakit,
+                             arb.Vites,
+                             arb.Klima,
+                             arb.ArabaKm,
+                             arb.MotorHacmi,
+                             arb.Fiyat
+                         };
+            datagridarabasec.DataSource = result.ToList();
             sidepanel.Top = buttonmusteriprofil.Top;
             sidepanel.Left = panel1.Left;
             grparabasec.Hide();
@@ -166,14 +195,18 @@ namespace ArabaKiralamaWinUI
                 guncellenecekmusteri.MusteriEhliyetalis = dategncehliyet.Value;
                 guncellenecekmusteri.MusteriAdres = richtxtgncadres.Text;
                 mr.Guncelle(guncellenecekmusteri);
-                MusteriDataDoldur();
+  
             }
             else
             {
                 MessageBox.Show("Şifreler uyuşmuyor");
             }
             #endregion          
-            Helper.Temizle(this.Controls, grpprofil);         
+            Helper.Temizle(this.Controls, grpprofil);
+           
+            dataGridmusteriprofil.Refresh();
+            MusteriGuncelDoldur();
+
         }
 
         private void buttonmusteriprofilsil_Click(object sender, EventArgs e)
@@ -212,7 +245,7 @@ namespace ArabaKiralamaWinUI
                 DateTime kTarih = Convert.ToDateTime(dateTimePicker1.Text);
                 TimeSpan Sonuc = bTarih - kTarih;
                 label19.Text = Sonuc.TotalDays.ToString();
-                int a = Convert.ToInt32(label19.Text) * Convert.ToInt32(datagridarabasec.SelectedRows[0].Cells[8].Value);
+                int a = Convert.ToInt32(label19.Text) * Convert.ToInt32(datagridarabasec.SelectedRows[0].Cells[6].Value);
                 label20.Text = a.ToString();
             }
             else
@@ -231,6 +264,43 @@ namespace ArabaKiralamaWinUI
         }
 
         private void bttnode_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtkartadi.Text))
+            {
+                MessageBox.Show("İsim Soyisim giriniz");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtkartno.Text))
+            {
+                MessageBox.Show("Kart no giriniz");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtcvc.Text))
+            {
+                MessageBox.Show("Cvc kodunu giriniz");
+                return;
+            }
+            guncellenecekmusteri.MusteriKartadı = txtkartadi.Text;
+            guncellenecekmusteri.MusteriKartno = txtkartno.Text;
+            guncellenecekmusteri.MusteriKartsonkullanmatarihi = datesonkullan.Value;
+            guncellenecekmusteri.MusteriKartCvc = txtcvc.Text;
+            mr.Guncelle(guncellenecekmusteri);
+
+            mtr.Ekle(new MusteriTakip
+            {
+                MusteriId = Convert.ToInt32(dataGridmusteriprofil.CurrentRow.Cells[0].Value),
+                MusteriAdi = dataGridmusteriprofil.CurrentRow.Cells[3].Value.ToString(),
+                MusteriSoyadi = dataGridmusteriprofil.CurrentRow.Cells[4].Value.ToString(),
+                MusteriTelefon = dataGridmusteriprofil.CurrentRow.Cells[7].Value.ToString(),
+                ArabaID = Convert.ToInt32(datagridarabasec.CurrentRow.Cells[0].Value),
+                ArabaMarka = datagridarabasec.CurrentRow.Cells[1].Value.ToString(),
+                ArabaModel = datagridarabasec.CurrentRow.Cells[2].Value.ToString(),
+            });
+
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -143,10 +143,9 @@ namespace ArabaKiralamaWinUI
                 MessageBox.Show("Şifreler uyuşmuyor");
             }
                 
-            #endregion
-           
+            #endregion        
         }
-       public string x;
+       
         private void buttongiris_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtgirisuser.Text))
@@ -162,7 +161,7 @@ namespace ArabaKiralamaWinUI
             else
             {
                 var q = from mus in ac.Musteriler
-                        where mus.Username == txtgirisuser.Text
+                        where mus.Username == txtgirisuser.Text && mus.Password == txtgirissifre.Text
                         select new
                         {
                             mus.Username
@@ -173,14 +172,14 @@ namespace ArabaKiralamaWinUI
 
                     string muss = q.FirstOrDefault();
                     if (muss == (txtgirisuser.Text))
-                    {                     
+                    {  
                         gf.GirisMus(txtgirisuser.Text, txtgirissifre.Text);
                         MusteriForm mf = new MusteriForm();
                         mf.txtgncuser.Text = txtgirisuser.Text;
                         mf.label21.Text = txtgirisuser.Text;
                         mf.Show();
                         this.Hide();
-                    }
+                    }                   
                 }              
             }
 
@@ -197,7 +196,7 @@ namespace ArabaKiralamaWinUI
             else
             {
                 var q1 = from adm in ac.Adminler
-                        where adm.Username == txtgirisuser.Text
+                        where adm.Username == txtgirisuser.Text && adm.Password == txtgirissifre.Text
                         select new
                         {
                             adm.Username
@@ -213,9 +212,17 @@ namespace ArabaKiralamaWinUI
                         AdminForm af = new AdminForm();
                         af.Show();
                         this.Hide();
-                    }
+                    }                   
                 }
             }            
+        }
+
+        private void buttongiris_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttongiris_Click(this, new EventArgs());
+            }
         }
     }
 }
