@@ -31,12 +31,28 @@ namespace ArabaKiralamaWinUI
         ArabaRepository ar = new ArabaRepository();
         MarkaRepository mrk = new MarkaRepository();
         ModelRepository mr = new ModelRepository();
-        MusteriRepository msr = new MusteriRepository();
+        MusteriTakipRepository mtr = new MusteriTakipRepository();
         Araba guncellenecekaraba;
         Marka guncellenecekmarka;
         Model guncellenecekmodel;
         #endregion
         #region Metotlar
+        public void MusteriTakip()
+        {
+            var result = from mst in ac.MusteriTakipler
+                         select new
+                         {
+                             mst.MusteriTakipID,
+                             mst.MusteriId,
+                             mst.MusteriAdi,
+                             mst.MusteriSoyadi,
+                             mst.MusteriTelefon,
+                             mst.ArabaID,
+                             mst.ArabaMarka,
+                             mst.ArabaModel
+                         };
+            dataGridmusteritakip.DataSource = result.ToList();
+        }
         public void DataGridArabaDoldur()
         {
             var result = from arb in ac.Arabalar
@@ -104,7 +120,15 @@ namespace ArabaKiralamaWinUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();     
+            DialogResult dialogResult = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }               
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -127,7 +151,8 @@ namespace ArabaKiralamaWinUI
             cmbvites.DataSource = Enum.GetValues(typeof(VitesEnum));
             DataGridArabaDoldur();
             #endregion
-            dataGridmusteritakip.DataSource = ac.MusteriTakipler.ToList();
+            MusteriTakip();
+            this.ActiveControl = txtkytadminuser;
 
         }
 
@@ -144,7 +169,7 @@ namespace ArabaKiralamaWinUI
             grpadminekle.Show();
             grparabaekle.Hide();
             grpmusteritakip.Hide();
-
+            this.ActiveControl = txtkytadminuser;
         }
 
         private void buttonarabalar_Click(object sender, EventArgs e)
@@ -154,6 +179,7 @@ namespace ArabaKiralamaWinUI
             grpadminekle.Hide();
             grparabaekle.Show();
             grpmusteritakip.Hide();
+            this.ActiveControl = txtmarka;
 
         }
 
@@ -180,7 +206,15 @@ namespace ArabaKiralamaWinUI
         {
             sidepanel.Top = buttonadmincikis.Top;
             sidepanel.Left = panel1.Left;
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }           
         }
 
         private void buttonyenikayit_Click(object sender, EventArgs e)
@@ -216,12 +250,21 @@ namespace ArabaKiralamaWinUI
 
         private void buttonadminsil_Click(object sender, EventArgs e)
         {
-            if (datagridadmin.SelectedRows.Count > 0)
+            DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Sil", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                adr.Sil(Convert.ToInt32(datagridadmin.SelectedRows[0].Cells[0].Value));
+                if (datagridadmin.SelectedRows.Count > 0)
+                {
+                    adr.Sil(Convert.ToInt32(datagridadmin.SelectedRows[0].Cells[0].Value));
+                }
+                datagridadmin.DataSource = ac.Adminler.ToList();
+                Helper.Temizle(this.Controls, grparabaekle);
             }
-            datagridadmin.DataSource = ac.Adminler.ToList();
-            Helper.Temizle(this.Controls, grparabaekle);
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            
         }
 
         private void buttonarabaekle_Click(object sender, EventArgs e)
@@ -294,23 +337,32 @@ namespace ArabaKiralamaWinUI
 
         private void buttonarabasil_Click(object sender, EventArgs e)
         {
-            if (dataGridaraba.SelectedRows.Count > 0)
+            DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Sil", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value);
-                var result = (from res in ac.Markalar
-                             where res.ArabaId == id
-                             select res.MarkaID).FirstOrDefault();
-                int id2 = Convert.ToInt32(result);
-                mrk.Sil(id2);
-                var result2 = (from res2 in ac.Modeller
-                              where res2.MarkaId == id2
-                              select res2.ModelID).FirstOrDefault();
-                int id3 = Convert.ToInt32(result2);
-                mr.Sil(id3);               
-                ar.Sil(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value));
+                if (dataGridaraba.SelectedRows.Count > 0)
+                {
+                    int id = Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value);
+                    var result = (from res in ac.Markalar
+                                  where res.ArabaId == id
+                                  select res.MarkaID).FirstOrDefault();
+                    int id2 = Convert.ToInt32(result);
+                    mrk.Sil(id2);
+                    var result2 = (from res2 in ac.Modeller
+                                   where res2.MarkaId == id2
+                                   select res2.ModelID).FirstOrDefault();
+                    int id3 = Convert.ToInt32(result2);
+                    mr.Sil(id3);
+                    ar.Sil(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value));
+                }
+                DataGridArabaDoldur();
+                Helper.Temizle(this.Controls, grparabaekle);
             }
-            DataGridArabaDoldur();
-            Helper.Temizle(this.Controls, grparabaekle);
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            
         }
 
         private void dataGridaraba_DoubleClick(object sender, EventArgs e)
@@ -332,12 +384,20 @@ namespace ArabaKiralamaWinUI
 
         private void buttonmusteritakip_Click_1(object sender, EventArgs e)
         {
-            if (dataGridmusteritakip.SelectedRows.Count > 0)
+            DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Sil", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                msr.Sil(Convert.ToInt32(dataGridaraba.SelectedRows[0].Cells[0].Value));
+                if (dataGridmusteritakip.SelectedRows.Count > 0)
+                {
+                    mtr.Sil(Convert.ToInt32(dataGridmusteritakip.SelectedRows[0].Cells[0].Value));
+                }
+                MusteriTakip();
             }
-            DataGridMusteriDoldur();
-            Helper.Temizle(this.Controls, grpmusteritakip);
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            
         }
     }
 }

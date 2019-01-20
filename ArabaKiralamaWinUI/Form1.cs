@@ -35,18 +35,21 @@ namespace ArabaKiralamaWinUI
             cmbcinsiyet.DisplayMember = "Description";
             cmbcinsiyet.ValueMember = "Value";
             cmbcinsiyet.DataSource = Enum.GetValues(typeof(CinsiyetEnum));
+            this.ActiveControl = txtgirisuser;            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             grpgiris.Visible = false;
             grpkayit.Visible = true;
+            this.ActiveControl = txtkytuser;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             grpgiris.Visible = true;
             grpkayit.Visible = false;
+            this.ActiveControl = txtgirisuser;
         }
         public void User()
         {
@@ -100,20 +103,7 @@ namespace ArabaKiralamaWinUI
             {
                 MessageBox.Show("E-mailinizi giriniz");
                 return;
-            }
-            if (m.MusteriMail.Contains(txtkytemail.Text))
-            {
-                MessageBox.Show("E-mail adresi mevcut");
-                return;
-            }
-            DateTime bTarih = Convert.ToDateTime(DateTime.Now.Year);
-            DateTime kTarih = Convert.ToDateTime(datekytdogum.Value.Year);
-            TimeSpan Sonuc = bTarih - kTarih;
-            if (Convert.ToInt32(Sonuc) < 18)
-            {
-                MessageBox.Show("Yaşınız uygun değil");
-                return;
-            }
+            }                      
             if (string.IsNullOrEmpty(richtxtkytadres.Text))
             {
                 MessageBox.Show("E-mailinizi giriniz");
@@ -121,7 +111,7 @@ namespace ArabaKiralamaWinUI
             }
             #endregion
             #region Musteri Kayıt
-            if (txtgirissifre.Text == txtkytsifreonay.Text)
+            if (txtkytsifre.Text == txtkytsifreonay.Text)
             {
                 mr.Ekle(new Musteri
                 {
@@ -137,6 +127,7 @@ namespace ArabaKiralamaWinUI
                     MusteriAdres = richtxtkytadres.Text
                 });
                 Helper.Temizle(this.Controls, grpkayit);
+                MessageBox.Show("Kayıt başarılı");
             }
             else
             {
@@ -215,14 +206,6 @@ namespace ArabaKiralamaWinUI
                     }                   
                 }
             }            
-        }
-
-        private void buttongiris_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttongiris_Click(this, new EventArgs());
-            }
         }
     }
 }

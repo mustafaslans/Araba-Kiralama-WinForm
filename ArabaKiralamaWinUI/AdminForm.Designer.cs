@@ -281,7 +281,7 @@
             this.buttonadminsil.Location = new System.Drawing.Point(130, 338);
             this.buttonadminsil.Name = "buttonadminsil";
             this.buttonadminsil.Size = new System.Drawing.Size(100, 28);
-            this.buttonadminsil.TabIndex = 47;
+            this.buttonadminsil.TabIndex = 44;
             this.buttonadminsil.Text = "Sil";
             this.buttonadminsil.UseVisualStyleBackColor = false;
             this.buttonadminsil.Click += new System.EventHandler(this.buttonadminsil_Click);
@@ -293,7 +293,7 @@
             this.datagridadmin.Location = new System.Drawing.Point(60, 182);
             this.datagridadmin.Name = "datagridadmin";
             this.datagridadmin.Size = new System.Drawing.Size(240, 150);
-            this.datagridadmin.TabIndex = 46;
+            this.datagridadmin.TabIndex = 43;
             // 
             // buttonyenikayit
             // 
@@ -308,7 +308,7 @@
             this.buttonyenikayit.Location = new System.Drawing.Point(100, 123);
             this.buttonyenikayit.Name = "buttonyenikayit";
             this.buttonyenikayit.Size = new System.Drawing.Size(160, 44);
-            this.buttonyenikayit.TabIndex = 45;
+            this.buttonyenikayit.TabIndex = 42;
             this.buttonyenikayit.Text = "Yeni Kayıt";
             this.buttonyenikayit.UseVisualStyleBackColor = false;
             this.buttonyenikayit.Click += new System.EventHandler(this.buttonyenikayit_Click);
@@ -329,7 +329,7 @@
             this.txtkytadminsifreonay.Name = "txtkytadminsifreonay";
             this.txtkytadminsifreonay.PasswordChar = '*';
             this.txtkytadminsifreonay.Size = new System.Drawing.Size(100, 20);
-            this.txtkytadminsifreonay.TabIndex = 43;
+            this.txtkytadminsifreonay.TabIndex = 41;
             // 
             // label6
             // 
@@ -405,7 +405,7 @@
             this.txturetim.MaxLength = 4;
             this.txturetim.Name = "txturetim";
             this.txturetim.Size = new System.Drawing.Size(100, 20);
-            this.txturetim.TabIndex = 48;
+            this.txturetim.TabIndex = 37;
             // 
             // cmbklima
             // 
@@ -417,7 +417,7 @@
             this.cmbklima.Location = new System.Drawing.Point(268, 55);
             this.cmbklima.Name = "cmbklima";
             this.cmbklima.Size = new System.Drawing.Size(100, 21);
-            this.cmbklima.TabIndex = 47;
+            this.cmbklima.TabIndex = 40;
             // 
             // buttonarabasil
             // 
@@ -499,7 +499,7 @@
             this.cmbvites.Location = new System.Drawing.Point(268, 29);
             this.cmbvites.Name = "cmbvites";
             this.cmbvites.Size = new System.Drawing.Size(100, 21);
-            this.cmbvites.TabIndex = 41;
+            this.cmbvites.TabIndex = 39;
             // 
             // cmbyakit
             // 
@@ -508,7 +508,7 @@
             this.cmbyakit.Location = new System.Drawing.Point(89, 108);
             this.cmbyakit.Name = "cmbyakit";
             this.cmbyakit.Size = new System.Drawing.Size(100, 21);
-            this.cmbyakit.TabIndex = 40;
+            this.cmbyakit.TabIndex = 38;
             // 
             // txtfiyat
             // 
@@ -516,7 +516,7 @@
             this.txtfiyat.Location = new System.Drawing.Point(268, 134);
             this.txtfiyat.Name = "txtfiyat";
             this.txtfiyat.Size = new System.Drawing.Size(41, 20);
-            this.txtfiyat.TabIndex = 39;
+            this.txtfiyat.TabIndex = 43;
             // 
             // txtmotorhacmi
             // 
@@ -524,7 +524,7 @@
             this.txtmotorhacmi.Location = new System.Drawing.Point(268, 108);
             this.txtmotorhacmi.Name = "txtmotorhacmi";
             this.txtmotorhacmi.Size = new System.Drawing.Size(100, 20);
-            this.txtmotorhacmi.TabIndex = 38;
+            this.txtmotorhacmi.TabIndex = 42;
             // 
             // txtkm
             // 
@@ -532,7 +532,7 @@
             this.txtkm.Location = new System.Drawing.Point(268, 82);
             this.txtkm.Name = "txtkm";
             this.txtkm.Size = new System.Drawing.Size(100, 20);
-            this.txtkm.TabIndex = 37;
+            this.txtkm.TabIndex = 41;
             // 
             // txtmodel
             // 
@@ -679,8 +679,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.grpadminekle);
-            this.Controls.Add(this.grparabaekle);
             this.Controls.Add(this.grpmusteritakip);
+            this.Controls.Add(this.grparabaekle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

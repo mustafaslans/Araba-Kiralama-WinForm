@@ -181,11 +181,10 @@
             this.buttongiris.Location = new System.Drawing.Point(127, 135);
             this.buttongiris.Name = "buttongiris";
             this.buttongiris.Size = new System.Drawing.Size(119, 44);
-            this.buttongiris.TabIndex = 5;
+            this.buttongiris.TabIndex = 2;
             this.buttongiris.Text = "Giriş";
             this.buttongiris.UseVisualStyleBackColor = false;
             this.buttongiris.Click += new System.EventHandler(this.buttongiris_Click);
-            this.buttongiris.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttongiris_KeyDown);
             // 
             // grpkayit
             // 
@@ -237,7 +236,7 @@
             this.txtkytsifreonay.Name = "txtkytsifreonay";
             this.txtkytsifreonay.PasswordChar = '*';
             this.txtkytsifreonay.Size = new System.Drawing.Size(100, 20);
-            this.txtkytsifreonay.TabIndex = 28;
+            this.txtkytsifreonay.TabIndex = 2;
             // 
             // buttonyenikayit
             // 
@@ -252,7 +251,7 @@
             this.buttonyenikayit.Location = new System.Drawing.Point(276, 225);
             this.buttonyenikayit.Name = "buttonyenikayit";
             this.buttonyenikayit.Size = new System.Drawing.Size(160, 44);
-            this.buttonyenikayit.TabIndex = 27;
+            this.buttonyenikayit.TabIndex = 12;
             this.buttonyenikayit.Text = "Yeni Kayıt";
             this.buttonyenikayit.UseVisualStyleBackColor = false;
             this.buttonyenikayit.Click += new System.EventHandler(this.buttonyenikayit_Click);
@@ -264,7 +263,7 @@
             this.cmbcinsiyet.Location = new System.Drawing.Point(88, 233);
             this.cmbcinsiyet.Name = "cmbcinsiyet";
             this.cmbcinsiyet.Size = new System.Drawing.Size(100, 21);
-            this.cmbcinsiyet.TabIndex = 25;
+            this.cmbcinsiyet.TabIndex = 7;
             // 
             // richtxtkytadres
             // 
@@ -272,7 +271,7 @@
             this.richtxtkytadres.Location = new System.Drawing.Point(316, 122);
             this.richtxtkytadres.Name = "richtxtkytadres";
             this.richtxtkytadres.Size = new System.Drawing.Size(154, 91);
-            this.richtxtkytadres.TabIndex = 24;
+            this.richtxtkytadres.TabIndex = 11;
             this.richtxtkytadres.Text = "";
             // 
             // datekytehliyet
@@ -281,7 +280,7 @@
             this.datekytehliyet.Location = new System.Drawing.Point(316, 94);
             this.datekytehliyet.Name = "datekytehliyet";
             this.datekytehliyet.Size = new System.Drawing.Size(95, 20);
-            this.datekytehliyet.TabIndex = 23;
+            this.datekytehliyet.TabIndex = 10;
             // 
             // datekytdogum
             // 
@@ -289,7 +288,7 @@
             this.datekytdogum.Location = new System.Drawing.Point(316, 66);
             this.datekytdogum.Name = "datekytdogum";
             this.datekytdogum.Size = new System.Drawing.Size(95, 20);
-            this.datekytdogum.TabIndex = 22;
+            this.datekytdogum.TabIndex = 9;
             // 
             // label13
             // 
@@ -396,7 +395,7 @@
             this.txtkytemail.Location = new System.Drawing.Point(314, 37);
             this.txtkytemail.Name = "txtkytemail";
             this.txtkytemail.Size = new System.Drawing.Size(100, 20);
-            this.txtkytemail.TabIndex = 7;
+            this.txtkytemail.TabIndex = 8;
             // 
             // txtkyttelefon
             // 
@@ -405,7 +404,7 @@
             this.txtkyttelefon.MaxLength = 10;
             this.txtkyttelefon.Name = "txtkyttelefon";
             this.txtkyttelefon.Size = new System.Drawing.Size(100, 20);
-            this.txtkyttelefon.TabIndex = 5;
+            this.txtkyttelefon.TabIndex = 6;
             // 
             // txtkyttcno
             // 
@@ -414,7 +413,7 @@
             this.txtkyttcno.MaxLength = 11;
             this.txtkyttcno.Name = "txtkyttcno";
             this.txtkyttcno.Size = new System.Drawing.Size(100, 20);
-            this.txtkyttcno.TabIndex = 4;
+            this.txtkyttcno.TabIndex = 5;
             // 
             // txtkytsoyad
             // 
@@ -422,7 +421,7 @@
             this.txtkytsoyad.Location = new System.Drawing.Point(88, 149);
             this.txtkytsoyad.Name = "txtkytsoyad";
             this.txtkytsoyad.Size = new System.Drawing.Size(100, 20);
-            this.txtkytsoyad.TabIndex = 3;
+            this.txtkytsoyad.TabIndex = 4;
             // 
             // txtkytad
             // 
@@ -430,7 +429,7 @@
             this.txtkytad.Location = new System.Drawing.Point(88, 121);
             this.txtkytad.Name = "txtkytad";
             this.txtkytad.Size = new System.Drawing.Size(100, 20);
-            this.txtkytad.TabIndex = 2;
+            this.txtkytad.TabIndex = 3;
             // 
             // txtkytsifre
             // 
@@ -469,6 +468,7 @@
             // 
             // Form1
             // 
+            this.AcceptButton = this.buttongiris;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;

@@ -48,6 +48,7 @@ namespace ArabaKiralamaWinUI
             InitializeComponent();
             datesonkullan.Format = DateTimePickerFormat.Custom;
             datesonkullan.CustomFormat = "MM/yyyy";
+            
         }
 
         private void MusteriForm_Load(object sender, EventArgs e)
@@ -84,13 +85,23 @@ namespace ArabaKiralamaWinUI
             {
                 MusteriDataDoldur();
             }
-            
+            guncellenecekmusteri = mr.GetById(Convert.ToInt32(dataGridmusteriprofil.SelectedRows[0].Cells[0].Value));
+            this.ActiveControl = txtgncuser;
+
         }
         private void buttonmustericikis_Click(object sender, EventArgs e)
         {
             sidepanel.Top = buttonmustericikis.Top;
             sidepanel.Left = panel1.Left;
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }            
         }
 
         private void buttonmusteriarabalar_Click(object sender, EventArgs e)
@@ -109,6 +120,7 @@ namespace ArabaKiralamaWinUI
             grpprofil.Hide();
             grparabasec.Hide();
             grpodeme.Show();
+            this.ActiveControl = txtkartadi;
         }
 
         private void buttonmusteriprofil_Click(object sender, EventArgs e)
@@ -117,11 +129,20 @@ namespace ArabaKiralamaWinUI
             sidepanel.Left = panel1.Left;
             grparabasec.Hide();
             grpprofil.Show();
+            this.ActiveControl = txtgncuser;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Çıkmak istediğinizden emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }           
         }
 
         private void buttonyenikayit_Click(object sender, EventArgs e)
@@ -152,29 +173,21 @@ namespace ArabaKiralamaWinUI
                 MessageBox.Show("Soyadınızı giriniz");
                 return;
             }
-            if (string.IsNullOrEmpty(txtgnctcno.Text))
+            if (txtgnctcno.TextLength != 11)
             {
-                MessageBox.Show("Tc no giriniz");
+                MessageBox.Show("Tc no hatalı");
                 return;
             }
-            if (string.IsNullOrEmpty(txtgnctelefon.Text))
+            if (txtgnctelefon.TextLength != 10)
             {
-                MessageBox.Show("Telefon numaranızı giriniz");
+                MessageBox.Show("Telefon numaranız hatalı");
                 return;
             }
             if (string.IsNullOrEmpty(txtgncemail.Text))
             {
                 MessageBox.Show("E-mailinizi giriniz");
                 return;
-            }           
-            //DateTime bTarih = Convert.ToDateTime(DateTime.Now.Year);
-            //DateTime kTarih = Convert.ToDateTime(dategncdogum.Value.Year);
-            //TimeSpan Sonuc = bTarih - kTarih;
-            //if (Convert.ToInt32(Sonuc) < 18)
-            //{
-            //    MessageBox.Show("Yaşınız uygun değil");
-            //    return;
-            //}
+            }                      
             if (string.IsNullOrEmpty(richtxtgncadres.Text))
             {
                 MessageBox.Show("E-mailinizi giriniz");
@@ -195,35 +208,23 @@ namespace ArabaKiralamaWinUI
                 guncellenecekmusteri.MusteriEhliyetalis = dategncehliyet.Value;
                 guncellenecekmusteri.MusteriAdres = richtxtgncadres.Text;
                 mr.Guncelle(guncellenecekmusteri);
-  
+                MessageBox.Show("Güncellendi");
+                Helper.Temizle(this.Controls, grpprofil);
+                MusteriGuncelDoldur();
+
             }
             else
             {
                 MessageBox.Show("Şifreler uyuşmuyor");
             }
-            #endregion          
-            Helper.Temizle(this.Controls, grpprofil);
-           
-            dataGridmusteriprofil.Refresh();
-            MusteriGuncelDoldur();
-
-        }
-
-        private void buttonmusteriprofilsil_Click(object sender, EventArgs e)
-        {
-            if (dataGridmusteriprofil.SelectedRows.Count > 0)
-            {
-                mr.Sil(Convert.ToInt32(dataGridmusteriprofil.SelectedRows[0].Cells[0].Value));
-            }
-            MusteriDataDoldur();
-            Helper.Temizle(this.Controls, grpprofil);
+            #endregion                                
         }
 
         private void dataGridmusteriprofil_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridmusteriprofil.SelectedRows.Count > 0)
             {
-                guncellenecekmusteri = mr.GetById(Convert.ToInt32(dataGridmusteriprofil.SelectedRows[0].Cells[0].Value));
+                
                 txtgncsifre.Text = guncellenecekmusteri.Password;
                 txtgncad.Text = guncellenecekmusteri.MusteriAd;
                 txtgncsoyad.Text = guncellenecekmusteri.MusteriSoyad;
@@ -245,7 +246,7 @@ namespace ArabaKiralamaWinUI
                 DateTime kTarih = Convert.ToDateTime(dateTimePicker1.Text);
                 TimeSpan Sonuc = bTarih - kTarih;
                 label19.Text = Sonuc.TotalDays.ToString();
-                int a = Convert.ToInt32(label19.Text) * Convert.ToInt32(datagridarabasec.SelectedRows[0].Cells[6].Value);
+                int a = Convert.ToInt32(label19.Text) * Convert.ToInt32(datagridarabasec.SelectedRows[0].Cells[9].Value);
                 label20.Text = a.ToString();
             }
             else
@@ -265,44 +266,64 @@ namespace ArabaKiralamaWinUI
 
         private void bttnode_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtkartadi.Text))
+           
+            if (!string.IsNullOrEmpty(txtkartadi.Text))
             {
-                MessageBox.Show("İsim Soyisim giriniz");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtkartno.Text))
-            {
-                MessageBox.Show("Kart no giriniz");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtcvc.Text))
-            {
-                MessageBox.Show("Cvc kodunu giriniz");
-                return;
-            }
-            guncellenecekmusteri.MusteriKartadı = txtkartadi.Text;
-            guncellenecekmusteri.MusteriKartno = txtkartno.Text;
-            guncellenecekmusteri.MusteriKartsonkullanmatarihi = datesonkullan.Value;
-            guncellenecekmusteri.MusteriKartCvc = txtcvc.Text;
-            mr.Guncelle(guncellenecekmusteri);
+                if (txtkartno.TextLength == 16)
+                {
+                    if (txtcvc.TextLength == 3)
+                    {
+                        mtr.Ekle(new MusteriTakip
+                        {
+                            MusteriId = Convert.ToInt32(dataGridmusteriprofil.CurrentRow.Cells[0].Value),
+                            MusteriAdi = dataGridmusteriprofil.CurrentRow.Cells[3].Value.ToString(),
+                            MusteriSoyadi = dataGridmusteriprofil.CurrentRow.Cells[4].Value.ToString(),
+                            MusteriTelefon = dataGridmusteriprofil.CurrentRow.Cells[7].Value.ToString(),
+                            ArabaID = Convert.ToInt32(datagridarabasec.CurrentRow.Cells[0].Value),
+                            ArabaMarka = datagridarabasec.CurrentRow.Cells[1].Value.ToString(),
+                            ArabaModel = datagridarabasec.CurrentRow.Cells[2].Value.ToString(),                          
+                        });
+                        Helper.Temizle(this.Controls, grpodeme);
+                        MessageBox.Show("Ödeme gerçekleşti");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cvc kodu eksik girildi");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kart no eksik girildi");
+                }
 
-            mtr.Ekle(new MusteriTakip
+            }
+            else
             {
-                MusteriId = Convert.ToInt32(dataGridmusteriprofil.CurrentRow.Cells[0].Value),
-                MusteriAdi = dataGridmusteriprofil.CurrentRow.Cells[3].Value.ToString(),
-                MusteriSoyadi = dataGridmusteriprofil.CurrentRow.Cells[4].Value.ToString(),
-                MusteriTelefon = dataGridmusteriprofil.CurrentRow.Cells[7].Value.ToString(),
-                ArabaID = Convert.ToInt32(datagridarabasec.CurrentRow.Cells[0].Value),
-                ArabaMarka = datagridarabasec.CurrentRow.Cells[1].Value.ToString(),
-                ArabaModel = datagridarabasec.CurrentRow.Cells[2].Value.ToString(),
-            });
-
-
+                MessageBox.Show("Adınızı giriniz");
+            }
+ 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
+        private void button1_Click(object sender, EventArgs e)
+        {            
+            var result = from arb in ac.Arabalar
+                         join mar in ac.Markalar on arb.ArabaID equals mar.ArabaId
+                         join mod in ac.Modeller on mar.MarkaID equals mod.MarkaId
+                         where mar.MarkaAdi == txtarabaara.Text
+                         select new
+                         {
+                             arb.ArabaID,
+                             mar.MarkaAdi,
+                             mod.ModelAdi,
+                             arb.UretimYili,
+                             arb.Yakit,
+                             arb.Vites,
+                             arb.Klima,
+                             arb.ArabaKm,
+                             arb.MotorHacmi,
+                             arb.Fiyat
+                         };
+            datagridarabasec.DataSource = result.ToList();
         }
     }
 }

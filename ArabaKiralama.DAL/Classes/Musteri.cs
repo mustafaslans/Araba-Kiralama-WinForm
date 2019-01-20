@@ -19,14 +19,6 @@ namespace ArabaKiralama.DAL.Classes
         public string MusteriCinsiyet { get; set; }
         public DateTime MusteriEhliyetalis { get; set; }
         public string MusteriMail { get; set; }
-        public string MusteriAdres { get; set; }
-        public string MusteriKartadı { get; set; }
-        public string MusteriKartno { get; set; }
-        public DateTime MusteriKartsonkullanmatarihi { get; set; }
-        public string MusteriKartCvc { get; set; }
-        public int? MusteriTakipId { get; set; }
-
-
-
+        public string MusteriAdres { get; set; }        
     }
 }

@@ -42,7 +42,6 @@
             this.sidepanel = new System.Windows.Forms.Panel();
             this.grpprofil = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.buttonmusteriprofilsil = new System.Windows.Forms.Button();
             this.dataGridmusteriprofil = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtgncsifreonay = new System.Windows.Forms.TextBox();
@@ -92,6 +91,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtarabaara = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -114,7 +117,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(633, 39);
             this.panel2.TabIndex = 7;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox2
             // 
@@ -268,7 +270,6 @@
             // grpprofil
             // 
             this.grpprofil.Controls.Add(this.label21);
-            this.grpprofil.Controls.Add(this.buttonmusteriprofilsil);
             this.grpprofil.Controls.Add(this.dataGridmusteriprofil);
             this.grpprofil.Controls.Add(this.label3);
             this.grpprofil.Controls.Add(this.txtgncsifreonay);
@@ -308,24 +309,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(32, 13);
             this.label21.TabIndex = 84;
-            // 
-            // buttonmusteriprofilsil
-            // 
-            this.buttonmusteriprofilsil.BackColor = System.Drawing.Color.Gray;
-            this.buttonmusteriprofilsil.Cursor = System.Windows.Forms.Cursors.Default;
-            this.buttonmusteriprofilsil.FlatAppearance.BorderSize = 0;
-            this.buttonmusteriprofilsil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonmusteriprofilsil.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GrayText;
-            this.buttonmusteriprofilsil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonmusteriprofilsil.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonmusteriprofilsil.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonmusteriprofilsil.Location = new System.Drawing.Point(430, 233);
-            this.buttonmusteriprofilsil.Name = "buttonmusteriprofilsil";
-            this.buttonmusteriprofilsil.Size = new System.Drawing.Size(111, 44);
-            this.buttonmusteriprofilsil.TabIndex = 83;
-            this.buttonmusteriprofilsil.Text = "Sil";
-            this.buttonmusteriprofilsil.UseVisualStyleBackColor = false;
-            this.buttonmusteriprofilsil.Click += new System.EventHandler(this.buttonmusteriprofilsil_Click);
+            this.label21.Visible = false;
             // 
             // dataGridmusteriprofil
             // 
@@ -354,7 +338,7 @@
             this.txtgncsifreonay.Name = "txtgncsifreonay";
             this.txtgncsifreonay.PasswordChar = '*';
             this.txtgncsifreonay.Size = new System.Drawing.Size(100, 20);
-            this.txtgncsifreonay.TabIndex = 80;
+            this.txtgncsifreonay.TabIndex = 59;
             // 
             // buttonyenikayit
             // 
@@ -366,10 +350,10 @@
             this.buttonyenikayit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonyenikayit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.buttonyenikayit.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonyenikayit.Location = new System.Drawing.Point(255, 233);
+            this.buttonyenikayit.Location = new System.Drawing.Point(376, 234);
             this.buttonyenikayit.Name = "buttonyenikayit";
             this.buttonyenikayit.Size = new System.Drawing.Size(111, 44);
-            this.buttonyenikayit.TabIndex = 79;
+            this.buttonyenikayit.TabIndex = 69;
             this.buttonyenikayit.Text = "Güncelle";
             this.buttonyenikayit.UseVisualStyleBackColor = false;
             this.buttonyenikayit.Click += new System.EventHandler(this.buttonyenikayit_Click);
@@ -381,7 +365,7 @@
             this.cmbcinsiyet.Location = new System.Drawing.Point(105, 233);
             this.cmbcinsiyet.Name = "cmbcinsiyet";
             this.cmbcinsiyet.Size = new System.Drawing.Size(100, 21);
-            this.cmbcinsiyet.TabIndex = 78;
+            this.cmbcinsiyet.TabIndex = 64;
             // 
             // richtxtgncadres
             // 
@@ -389,7 +373,7 @@
             this.richtxtgncadres.Location = new System.Drawing.Point(333, 122);
             this.richtxtgncadres.Name = "richtxtgncadres";
             this.richtxtgncadres.Size = new System.Drawing.Size(154, 91);
-            this.richtxtgncadres.TabIndex = 77;
+            this.richtxtgncadres.TabIndex = 68;
             this.richtxtgncadres.Text = "";
             // 
             // dategncehliyet
@@ -398,7 +382,7 @@
             this.dategncehliyet.Location = new System.Drawing.Point(333, 94);
             this.dategncehliyet.Name = "dategncehliyet";
             this.dategncehliyet.Size = new System.Drawing.Size(95, 20);
-            this.dategncehliyet.TabIndex = 76;
+            this.dategncehliyet.TabIndex = 67;
             // 
             // dategncdogum
             // 
@@ -406,7 +390,7 @@
             this.dategncdogum.Location = new System.Drawing.Point(333, 66);
             this.dategncdogum.Name = "dategncdogum";
             this.dategncdogum.Size = new System.Drawing.Size(95, 20);
-            this.dategncdogum.TabIndex = 75;
+            this.dategncdogum.TabIndex = 66;
             // 
             // label13
             // 
@@ -513,7 +497,7 @@
             this.txtgncemail.Location = new System.Drawing.Point(331, 37);
             this.txtgncemail.Name = "txtgncemail";
             this.txtgncemail.Size = new System.Drawing.Size(100, 20);
-            this.txtgncemail.TabIndex = 63;
+            this.txtgncemail.TabIndex = 65;
             // 
             // txtgnctelefon
             // 
@@ -522,7 +506,7 @@
             this.txtgnctelefon.MaxLength = 10;
             this.txtgnctelefon.Name = "txtgnctelefon";
             this.txtgnctelefon.Size = new System.Drawing.Size(100, 20);
-            this.txtgnctelefon.TabIndex = 62;
+            this.txtgnctelefon.TabIndex = 63;
             // 
             // txtgnctcno
             // 
@@ -531,7 +515,7 @@
             this.txtgnctcno.MaxLength = 11;
             this.txtgnctcno.Name = "txtgnctcno";
             this.txtgnctcno.Size = new System.Drawing.Size(100, 20);
-            this.txtgnctcno.TabIndex = 61;
+            this.txtgnctcno.TabIndex = 62;
             // 
             // txtgncsoyad
             // 
@@ -539,7 +523,7 @@
             this.txtgncsoyad.Location = new System.Drawing.Point(105, 149);
             this.txtgncsoyad.Name = "txtgncsoyad";
             this.txtgncsoyad.Size = new System.Drawing.Size(100, 20);
-            this.txtgncsoyad.TabIndex = 60;
+            this.txtgncsoyad.TabIndex = 61;
             // 
             // txtgncad
             // 
@@ -547,7 +531,7 @@
             this.txtgncad.Location = new System.Drawing.Point(105, 121);
             this.txtgncad.Name = "txtgncad";
             this.txtgncad.Size = new System.Drawing.Size(100, 20);
-            this.txtgncad.TabIndex = 59;
+            this.txtgncad.TabIndex = 60;
             // 
             // txtgncsifre
             // 
@@ -569,6 +553,10 @@
             // 
             // grparabasec
             // 
+            this.grparabasec.Controls.Add(this.label27);
+            this.grparabasec.Controls.Add(this.button1);
+            this.grparabasec.Controls.Add(this.txtarabaara);
+            this.grparabasec.Controls.Add(this.label26);
             this.grparabasec.Controls.Add(this.bttnhesapla);
             this.grparabasec.Controls.Add(this.label20);
             this.grparabasec.Controls.Add(this.label19);
@@ -593,7 +581,7 @@
             this.bttnhesapla.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bttnhesapla.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GrayText;
             this.bttnhesapla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnhesapla.Location = new System.Drawing.Point(193, 294);
+            this.bttnhesapla.Location = new System.Drawing.Point(193, 314);
             this.bttnhesapla.Name = "bttnhesapla";
             this.bttnhesapla.Size = new System.Drawing.Size(88, 32);
             this.bttnhesapla.TabIndex = 9;
@@ -603,7 +591,7 @@
             // 
             // label20
             // 
-            this.label20.Location = new System.Drawing.Point(78, 339);
+            this.label20.Location = new System.Drawing.Point(79, 342);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(45, 23);
             this.label20.TabIndex = 8;
@@ -611,7 +599,7 @@
             // 
             // label19
             // 
-            this.label19.Location = new System.Drawing.Point(79, 297);
+            this.label19.Location = new System.Drawing.Point(79, 315);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(45, 23);
             this.label19.TabIndex = 7;
@@ -619,14 +607,14 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(81, 258);
+            this.dateTimePicker2.Location = new System.Drawing.Point(81, 287);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 6;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(81, 219);
+            this.dateTimePicker1.Location = new System.Drawing.Point(81, 262);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -634,7 +622,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(9, 343);
+            this.label18.Location = new System.Drawing.Point(9, 347);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(32, 13);
             this.label18.TabIndex = 4;
@@ -643,7 +631,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 303);
+            this.label17.Location = new System.Drawing.Point(9, 320);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 3;
@@ -652,7 +640,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 263);
+            this.label16.Location = new System.Drawing.Point(9, 293);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 13);
             this.label16.TabIndex = 2;
@@ -661,7 +649,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 223);
+            this.label2.Location = new System.Drawing.Point(7, 266);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -671,7 +659,7 @@
             // 
             this.datagridarabasec.BackgroundColor = System.Drawing.SystemColors.MenuBar;
             this.datagridarabasec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridarabasec.Location = new System.Drawing.Point(7, 20);
+            this.datagridarabasec.Location = new System.Drawing.Point(7, 63);
             this.datagridarabasec.Name = "datagridarabasec";
             this.datagridarabasec.Size = new System.Drawing.Size(563, 193);
             this.datagridarabasec.TabIndex = 0;
@@ -737,7 +725,7 @@
             this.datesonkullan.Location = new System.Drawing.Point(145, 100);
             this.datesonkullan.Name = "datesonkullan";
             this.datesonkullan.Size = new System.Drawing.Size(136, 20);
-            this.datesonkullan.TabIndex = 7;
+            this.datesonkullan.TabIndex = 6;
             // 
             // txtcvc
             // 
@@ -746,7 +734,7 @@
             this.txtcvc.MaxLength = 3;
             this.txtcvc.Name = "txtcvc";
             this.txtcvc.Size = new System.Drawing.Size(136, 20);
-            this.txtcvc.TabIndex = 6;
+            this.txtcvc.TabIndex = 7;
             // 
             // txtkartno
             // 
@@ -801,6 +789,46 @@
             this.label22.TabIndex = 0;
             this.label22.Text = "Kart Üzerindeki İsim :";
             // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(130, 342);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(45, 23);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "TL";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtarabaara
+            // 
+            this.txtarabaara.Location = new System.Drawing.Point(6, 39);
+            this.txtarabaara.Name = "txtarabaara";
+            this.txtarabaara.Size = new System.Drawing.Size(100, 20);
+            this.txtarabaara.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GrayText;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(121, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 20);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Ara";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 23);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(37, 13);
+            this.label27.TabIndex = 13;
+            this.label27.Text = "Marka";
+            // 
             // MusteriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,9 +837,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.grparabasec);
             this.Controls.Add(this.grpprofil);
             this.Controls.Add(this.grpodeme);
-            this.Controls.Add(this.grparabasec);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MusteriForm";
             this.Text = "MusteriForm";
@@ -849,7 +877,6 @@
         private System.Windows.Forms.Button buttonmustericikis;
         private System.Windows.Forms.Button buttonmusteriodeme;
         private System.Windows.Forms.GroupBox grpprofil;
-        private System.Windows.Forms.Button buttonmusteriprofilsil;
         private System.Windows.Forms.DataGridView dataGridmusteriprofil;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtgncsifreonay;
@@ -900,5 +927,9 @@
         private System.Windows.Forms.Button bttnode;
         public System.Windows.Forms.TextBox txtgncuser;
         public System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtarabaara;
     }
 }
