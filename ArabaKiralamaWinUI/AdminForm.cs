@@ -155,7 +155,7 @@ namespace ArabaKiralamaWinUI
             this.ActiveControl = txtkytadminuser;
 
         }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             sidepanel.Top = button2.Top;
@@ -243,7 +243,7 @@ namespace ArabaKiralamaWinUI
             {
                 MessageBox.Show("Şifreler uyuşmuyor");
             }
-            #endregion
+            #endregion           
             datagridadmin.DataSource = ac.Adminler.ToList();
             Helper.Temizle(this.Controls, grpadminekle);
         }

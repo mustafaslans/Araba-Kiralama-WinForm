@@ -116,7 +116,7 @@ namespace ArabaKiralamaWinUI
                 mr.Ekle(new Musteri
                 {
                     Username = txtkytuser.Text,
-                    Password = txtkytsifre.Text,
+                    Password = hashPass(txtkytsifre.Text),
                     MusteriAd = txtkytad.Text,
                     MusteriSoyad = txtkytsoyad.Text,
                     MusteriTcno = txtkyttcno.Text,
@@ -133,12 +133,33 @@ namespace ArabaKiralamaWinUI
             {
                 MessageBox.Show("Şifreler uyuşmuyor");
             }
-                
-            #endregion        
+
+            #endregion
+            
+
         }
-       
+        public static string hashPass(string psw)
+        {
+            try
+            {
+                System.Security.Cryptography.HashAlgorithm algorithm = System.Security.Cryptography.MD5.Create();
+                byte[] hashedPsw = algorithm.ComputeHash(Encoding.UTF8.GetBytes(psw));
+                StringBuilder sOutput = new StringBuilder(hashedPsw.Length);
+                for (int i = 0; i < hashedPsw.Length - 1; i++)
+                    sOutput.Append(hashedPsw[i].ToString(("X2")));
+                return sOutput.ToString();
+
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         private void buttongiris_Click(object sender, EventArgs e)
         {
+            string pas = hashPass(txtgirissifre.Text);
             if (string.IsNullOrEmpty(txtgirisuser.Text))
             {
                 MessageBox.Show("Kullanıcı adı giriniz..");
@@ -152,7 +173,7 @@ namespace ArabaKiralamaWinUI
             else
             {
                 var q = from mus in ac.Musteriler
-                        where mus.Username == txtgirisuser.Text && mus.Password == txtgirissifre.Text
+                        where mus.Username == txtgirisuser.Text && mus.Password == pas
                         select new
                         {
                             mus.Username
@@ -187,7 +208,7 @@ namespace ArabaKiralamaWinUI
             else
             {
                 var q1 = from adm in ac.Adminler
-                        where adm.Username == txtgirisuser.Text && adm.Password == txtgirissifre.Text
+                        where adm.Username == txtgirisuser.Text && adm.Password == pas
                         select new
                         {
                             adm.Username

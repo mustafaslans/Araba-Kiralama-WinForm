@@ -9,6 +9,7 @@ namespace ArabaKiralamaWinUI
 {
     public static class Helper
     {
+        
         public static void Temizle(Control.ControlCollection koleksiyon, GroupBox a)
         {
             foreach (Control c in koleksiyon)

@@ -78,14 +78,9 @@ namespace ArabaKiralamaWinUI
             cmbcinsiyet.DisplayMember = "Description";
             cmbcinsiyet.ValueMember = "Value";
             cmbcinsiyet.DataSource = Enum.GetValues(typeof(CinsiyetEnum));
-            if (ac.Musteriler == null)
-            {
-                return;
-            }
-            else
-            {
-                MusteriDataDoldur();
-            }
+            
+            MusteriDataDoldur();
+            
             guncellenecekmusteri = mr.GetById(Convert.ToInt32(dataGridmusteriprofil.SelectedRows[0].Cells[0].Value));
             this.ActiveControl = txtgncuser;
 
