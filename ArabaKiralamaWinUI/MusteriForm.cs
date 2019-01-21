@@ -39,7 +39,8 @@ namespace ArabaKiralamaWinUI
         }
         public void MusteriGuncelDoldur()
         {
-            var result = ac.Musteriler.Where(x => x.Username == label21.Text);
+            ArabaContext cc = new ArabaContext();
+            var result = cc.Musteriler.Where(x => x.Username == label21.Text);
             dataGridmusteriprofil.DataSource = result.ToList();
 
         }

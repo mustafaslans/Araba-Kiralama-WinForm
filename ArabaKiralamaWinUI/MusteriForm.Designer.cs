@@ -69,6 +69,10 @@
             this.txtgncsifre = new System.Windows.Forms.TextBox();
             this.txtgncuser = new System.Windows.Forms.TextBox();
             this.grparabasec = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtarabaara = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.bttnhesapla = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -91,10 +95,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtarabaara = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -574,6 +574,46 @@
             this.grparabasec.TabStop = false;
             this.grparabasec.Text = "Araba Seçimi";
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 23);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(37, 13);
+            this.label27.TabIndex = 13;
+            this.label27.Text = "Marka";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GrayText;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(121, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 20);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Ara";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtarabaara
+            // 
+            this.txtarabaara.Location = new System.Drawing.Point(6, 39);
+            this.txtarabaara.Name = "txtarabaara";
+            this.txtarabaara.Size = new System.Drawing.Size(100, 20);
+            this.txtarabaara.TabIndex = 11;
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(130, 342);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(45, 23);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "TL";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // bttnhesapla
             // 
             this.bttnhesapla.BackColor = System.Drawing.Color.Gray;
@@ -789,46 +829,6 @@
             this.label22.TabIndex = 0;
             this.label22.Text = "Kart Üzerindeki İsim :";
             // 
-            // label26
-            // 
-            this.label26.Location = new System.Drawing.Point(130, 342);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(45, 23);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "TL";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtarabaara
-            // 
-            this.txtarabaara.Location = new System.Drawing.Point(6, 39);
-            this.txtarabaara.Name = "txtarabaara";
-            this.txtarabaara.Size = new System.Drawing.Size(100, 20);
-            this.txtarabaara.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GrayText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(121, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 20);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Ara";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(6, 23);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(37, 13);
-            this.label27.TabIndex = 13;
-            this.label27.Text = "Marka";
-            // 
             // MusteriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,9 +837,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.grparabasec);
             this.Controls.Add(this.grpprofil);
             this.Controls.Add(this.grpodeme);
+            this.Controls.Add(this.grparabasec);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MusteriForm";
             this.Text = "MusteriForm";
